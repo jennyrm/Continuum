@@ -12,12 +12,7 @@ class PostDetailTableViewController: UITableViewController {
     
     //MARK: - Outlets
     @IBOutlet weak var photoImageView: UIImageView!
-    
-    //MARK: - LifeCycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+        
     //MARK: - Properties
     var post: Post? {
         didSet {
@@ -26,12 +21,22 @@ class PostDetailTableViewController: UITableViewController {
         }
     }
     
+    //MARK: - LifeCycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    
     //MARK: - Actions
     @IBAction func commentButtonTapped(_ sender: UIButton) {
         presentCommentAlertController()
     }
     
     @IBAction func shareButtonTapped(_ sender: UIButton) {
+        guard let post = post else { return }
+        let shareVC = UIActivityViewController(activityItems: [post.caption, post.photo], applicationActivities: [])
+        
+        present(shareVC, animated: true)
     }
     
     @IBAction func followPostButtonTapped(_ sender: UIButton) {

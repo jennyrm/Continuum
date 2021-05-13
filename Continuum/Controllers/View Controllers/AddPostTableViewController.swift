@@ -11,36 +11,24 @@ import UIKit
 class AddPostTableViewController: UITableViewController {
     
     //MARK: - Outlets
-    @IBOutlet weak var selectImageButton: UIButton!
-    @IBOutlet weak var selectedImageView: UIImageView!
     @IBOutlet weak var addCaptionTextField: UITextField!
     
     //MARK: - Properties
+    var selectedImage: UIImage?
     
-    //MARK: - LifeCycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+    //MARK: - Lifecycle
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        selectImageButton.setTitle("Select Image", for: .normal)
-        selectedImageView.image = nil
+        
         addCaptionTextField.text = ""
     }
     
     //MARK: - Actions
-    @IBAction func selectImageButtonTapped(_ sender: UIButton) {
-        selectImageButton.setTitle("", for: .normal)
-        selectedImageView.image = UIImage(named: "spaceEmptyState")
-    }
-    
     @IBAction func addPostButtonTapped(_ sender: UIButton) {
-        guard let photo = selectedImageView.image, 
-        let caption = addCaptionTextField.text, !caption.isEmpty else { return self.presentErrorAlert(title: "Error!", message: "Must insert a caption and a photo.") }
+        guard let photo = selectedImage,
+              let caption = addCaptionTextField.text, !caption.isEmpty else { return self.presentErrorAlert(title: "Error!", message: "Must insert a caption and a photo.") }
         
         PostController.sharedInstance.createPostWith(photo: photo, caption: caption) { (result) in }
-
         self.tabBarController?.selectedIndex = 0
     }
     
@@ -48,4 +36,21 @@ class AddPostTableViewController: UITableViewController {
         self.tabBarController?.selectedIndex = 0
     }
     
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toPhotoSelectorVC" {
+            guard let destinationVC = segue.destination as? PhotoSelectorViewController else { return }
+            destinationVC.delegate = self
+        }
+    }
+    
 }//End of class
+
+//MARK: - Extensions
+extension AddPostTableViewController: PhotoSelectorViewControllerDelegate {
+    
+    func photoSelectorViewControllerSelected(image: UIImage) {
+        selectedImage = image
+    }
+    
+}//End of extension

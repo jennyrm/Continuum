@@ -11,29 +11,40 @@ import UIKit
 class PostListTableViewController: UITableViewController {
     
     //MARK: - Outlets
-
+    @IBOutlet weak var postSearchBar: UISearchBar!
+    
+    
+    //MARK: - Properties
+    var resultsArray = [SearchableRecord]()
+    var isSearching = false
+    
+    var dataSource: [SearchableRecord] {
+        return isSearching ? resultsArray : PostController.sharedInstance.posts
+    }
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        postSearchBar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        resultsArray = PostController.sharedInstance.posts
         tableView.reloadData()
     }
-    
-    //MARK: - Actions
     
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PostController.sharedInstance.posts.count
+        return dataSource.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
-        let post = PostController.sharedInstance.posts[indexPath.row]
-        cell.post = post
+        let post = dataSource[indexPath.row]
+        cell.post = post as? Post
         return cell
     }
 
@@ -55,3 +66,26 @@ class PostListTableViewController: UITableViewController {
 
 }//End of class
 
+//MARK: - Extensions
+extension PostListTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        resultsArray = PostController.sharedInstance.posts.filter { $0.matches(searchTerm: searchText) }
+        tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        resultsArray = PostController.sharedInstance.posts
+        tableView.reloadData()
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        isSearching = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+//          searchBar.text = ""
+        isSearching = false
+    }
+}//End of extension

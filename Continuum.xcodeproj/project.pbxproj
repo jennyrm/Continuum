@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B4A78E8264CD97200F5580B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A78E7264CD97200F5580B /* Strings.swift */; };
+		9B4A78EB264CF94900F5580B /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A78EA264CF94900F5580B /* UserError.swift */; };
+		9B96F15F264C5D7A004AD87E /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96F15E264C5D7A004AD87E /* Protocols.swift */; };
+		9B96F165264C876A004AD87E /* PhotoSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96F164264C876A004AD87E /* PhotoSelectorViewController.swift */; };
 		9BD6DC66264B0E8700891B66 /* PostListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD6DC65264B0E8700891B66 /* PostListTableViewController.swift */; };
 		9BD6DC6A264B0EAC00891B66 /* PostDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD6DC69264B0EAC00891B66 /* PostDetailTableViewController.swift */; };
 		9BD6DC6D264B0F9700891B66 /* AddPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD6DC6C264B0F9700891B66 /* AddPostTableViewController.swift */; };
@@ -25,6 +29,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B4A78E7264CD97200F5580B /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		9B4A78EA264CF94900F5580B /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
+		9B96F15E264C5D7A004AD87E /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		9B96F164264C876A004AD87E /* PhotoSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorViewController.swift; sourceTree = "<group>"; };
 		9BD6DC65264B0E8700891B66 /* PostListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListTableViewController.swift; sourceTree = "<group>"; };
 		9BD6DC69264B0EAC00891B66 /* PostDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailTableViewController.swift; sourceTree = "<group>"; };
 		9BD6DC6C264B0F9700891B66 /* AddPostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostTableViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +81,8 @@
 				9BD6DC86264B254100891B66 /* PostError.swift */,
 				9BD6DC89264B587100891B66 /* DateFormatter.swift */,
 				9BD6DC90264BA8E100891B66 /* UIViewControllerExtension.swift */,
+				9B96F15E264C5D7A004AD87E /* Protocols.swift */,
+				9B4A78EA264CF94900F5580B /* UserError.swift */,
 			);
 			path = "Helper+Extensions";
 			sourceTree = "<group>";
@@ -100,6 +110,7 @@
 			children = (
 				9BD6DC6F264B0FB800891B66 /* Post.swift */,
 				9BD6DC75264B10C400891B66 /* Comment.swift */,
+				9B4A78E7264CD97200F5580B /* Strings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -127,6 +138,7 @@
 				9BD6DC65264B0E8700891B66 /* PostListTableViewController.swift */,
 				9BD6DC69264B0EAC00891B66 /* PostDetailTableViewController.swift */,
 				9BD6DC6C264B0F9700891B66 /* AddPostTableViewController.swift */,
+				9B96F164264C876A004AD87E /* PhotoSelectorViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -250,9 +262,13 @@
 			files = (
 				9BD6DC76264B10C400891B66 /* Comment.swift in Sources */,
 				9BD6DC87264B254100891B66 /* PostError.swift in Sources */,
+				9B96F165264C876A004AD87E /* PhotoSelectorViewController.swift in Sources */,
+				9B96F15F264C5D7A004AD87E /* Protocols.swift in Sources */,
 				F7F99C392211F96400D13C4C /* AppDelegate.swift in Sources */,
 				9BD6DC66264B0E8700891B66 /* PostListTableViewController.swift in Sources */,
+				9B4A78E8264CD97200F5580B /* Strings.swift in Sources */,
 				9BD6DC8A264B587100891B66 /* DateFormatter.swift in Sources */,
+				9B4A78EB264CF94900F5580B /* UserError.swift in Sources */,
 				9BD6DC79264B10FA00891B66 /* PostTableViewCell.swift in Sources */,
 				9BD6DC6D264B0F9700891B66 /* AddPostTableViewController.swift in Sources */,
 				9BD6DC6A264B0EAC00891B66 /* PostDetailTableViewController.swift in Sources */,
